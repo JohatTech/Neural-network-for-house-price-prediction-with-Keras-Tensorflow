@@ -1,8 +1,9 @@
-Neural network for house price prediction using tensorflow/Keras#
+Neural network for house price prediction using tensorflow/Keras
+
 
 In this project the goals was to train a neural network arquitecture to be able to predict house price. But in this case we do not threat the model as a time-period prediction problem but rather a regression model.
 
-#Dataset
+Dataset
 
 The source of the dataset was the Kaggle House Price Prediction Competition Advanced Dataset.
 
@@ -10,9 +11,10 @@ First I cleaned the data, in this case our data has a lot of missing values and 
 
 Before move on to train the model I need to scale the data, since we are working we different type of scale in numerical values this could cause some bad performance in the model, so I first testd if my data follow a gaussian distribution, in this case the didn't so I decide to use normalization
 
-#The neural network
+The neural network
 
 For the neural network, I prepare the model using the Keras Sequential object, here below is the complete summary of the model architecture.
+
 Model: "sequential_1"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
