@@ -1,4 +1,4 @@
-#Neural network for house price prediction using tensorflow/Keras
+#Neural network for house price prediction using tensorflow/Keras#
 
 In this project the goals was to train a neural network arquitecture to be able to predict house price. But in this case we do not threat the model as a time-period prediction problem but rather a regression model.
 
