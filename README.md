@@ -1,7 +1,6 @@
 # Neural network for house price prediction using tensorflow/Keras
 
-
-The goal of this project is to explore the power that neural networks have in regression problem, I understand for sure that house prices is a time-period prediction problem, this project was build with the intention to explore this dataset with a diferent approach with educational purpose only.
+The gaol of this project is to build a deep neural network arquitecture to make house price prediction base on diferent features that houses present, the approach of to make this prediction is as a regression problem, we knwo that house prices variate widely over time, but in this case our dataset is just base on attributes of the houses and his sales prices rather than price of the house over time, so in this case this project is not about forecasting prices but to predict the possible price of a house base on their attributes.
 
  # Dataset
 
@@ -14,7 +13,22 @@ Before move on to train the model I need to scale the data, since we are working
 # The neural network
 
 For the neural network, I prepare the model using the Keras Sequential object, here below is the complete summary of the model architecture.
-
+```
+def build_model():
+    model = Sequential()
+    model.add(Dense(64,kernel_initializer='normal', input_dim=275, activation='relu'))
+    model.add(Dropout(0.2))
+    model.add(Dropout(0.2))
+    model.add(Dense(32,activation='relu'))
+    model.add(Dropout(0.2))
+    model.add(Dense(16,activation='relu'))
+    model.add(Dropout(0.2))
+    model.add(Dense(8,activation='relu'))
+    model.add(Dropout(0.2))
+    model.add(Dense(1,activation = 'linear'))
+    model.compile(loss='mean_squared_error', optimizer=optimizer, metrics=['mse', 'mae'])
+    return model
+```
 Model: "sequential_1"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
@@ -44,6 +58,34 @@ Total params: 20,417
 Trainable params: 20,417
 Non-trainable params: 0
 
+# Trainnig the model and evaluate performances
+
+We now start to fitting the model adn start the training phase with 500 epochs and batch_size, afert the training we evaluate the mean saure erroa dn plotting to see the results
+
+![image](https://user-images.githubusercontent.com/86735728/182750870-2d72287b-532c-4615-a28e-6645791fbb8d.png)
+
+Base on this image above we saw that model is leanring well but not as good as it's should, base on the analysis of the errorwe conclude that the model is unnstable, this could be solve by tunnig hyperparameters like the epochs or using regularization and changing the learning, rate, we found that learning rate less than 0.03 could cause innestability on the learning. 
+
+# Making some predictions 
+after the optimization we perform prediction tests with a test dataset, this are the results 
+
+array([[149190.06],
+       [158010.23],
+       [158180.06],
+       [176980.47],
+       [149111.11],
+       [229571.56],
+       [148512.72],
+       [132880.73],
+       [150227.83],
+       [201350.75],
+       [149336.38],
+       [129995.53],
+       [201350.75],
+       [122241.75],
+       [180679.2 ],])
+As you can see in this array, this are the prices predicted by the model, and here is a much condese overview of all the predictions maded.
+![image](https://user-images.githubusercontent.com/86735728/182751763-4128d93d-0ba8-4933-9d79-663e627833df.png)
 
 
 
