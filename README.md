@@ -12,7 +12,7 @@ Before move on to train the model I need to scale the data, since we are working
 
 # The neural network
 
-For the neural network, I prepare the model using the Keras Sequential object, here below is the complete summary of the model architecture.
+For the neural network, I **prepare** the model using the Keras Sequential object, here below is the complete summary of the model architecture.
 ```
 def build_model():
     model = Sequential()
